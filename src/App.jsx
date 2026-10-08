@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import Tabs from "./components/Tabs";
+import ResultGrid from "./components/ResultGrid";
 
 function App() {
   const handleSearchSubmit = (keyword) => {
@@ -11,8 +12,9 @@ function App() {
     // The min-h-screen and bg-slate-950 classes ensure the dark theme covers the entire window
     <div className="min-h-screen w-full bg-slate-950 text-slate-100 py-6">
       <SearchBar />
-
       <Tabs />
+
+      <ResultGrid />
     </div>
   );
 }
