@@ -1,17 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setQuery } from "../redux/features/searchSlice";
 
-const SearchBar = ({ queryText, setQueryText, onSearch }) => {
+const SearchBar = () => {
+  const [text, setText] = useState("");
   const dispatch = useDispatch();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setQuery(queryText));
-    if (onSearch) {
-      onSearch(queryText);
-    }
-
-    setQueryText("");
+    dispatch(setQuery(text));
+    setText("");
   };
 
   return (
@@ -20,8 +18,8 @@ const SearchBar = ({ queryText, setQueryText, onSearch }) => {
         {/* Input Field with Two-Way Binding */}
         <input
           type="text"
-          value={queryText}
-          onChange={(e) => setQueryText(e.target.value)}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
           placeholder="Search for images, videos, or gifs..."
           className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
         />
