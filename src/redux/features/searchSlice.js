@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const searchSlice = {
+const searchSlice = createSlice({
   name: "search",
   initialState: {
     query: "",
-    activeTab: "",
+    activeTab: "images",
     results: [],
     loading: false,
     error: null,
@@ -24,7 +24,7 @@ const searchSlice = {
       state.loading = true;
       state.error = null;
     },
-    setErrror(state, action) {
+    setError(state, action) {
       state.error = action.payload;
       state.loading = false;
     },
@@ -32,9 +32,9 @@ const searchSlice = {
       state.results = [];
     },
   },
-};
+});
 
 export const { setQuery, setActiveTabs, setLoading, setResults, setErrror } =
   searchSlice.actions;
 
-export default searchSlice.reducers;
+export default searchSlice.reducer;
