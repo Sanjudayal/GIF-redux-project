@@ -3,7 +3,7 @@ import { fetchPhotos, fetchVideos, fetchGifs } from "../api/mediaApi";
 import {
   setQuery,
   setLoading,
-  setErrror,
+  setError,
   setResults,
 } from "../redux/features/searchSlice";
 import { useEffect } from "react";
@@ -24,37 +24,43 @@ const ResultGrid = () => {
           let data = {};
           if (activeTab == "images") {
             let response = await fetchPhotos(query);
+            console.log(response.results);
             data = response.results.map((item) => ({
               id: item.id,
               type: "image",
-              title: item.description,
+              title: item.alt_description,
               thumbnail: item.urls.small_s3,
               src: item.urls.full,
+              url: item.links.html,
             }));
           }
           if (activeTab == "videos") {
             let response = await fetchVideos(query);
+            console.log(response.hits);
             data = response.hits.map((item) => ({
               id: item.id,
               type: "video",
-              title: item.name,
+              title: item.alt_description,
               thumbnail: item.videos.small.thumbnail,
               src: item.videos.large.url,
+              url: item.pageURL,
             }));
           }
           if (activeTab == "gifs") {
             let response = await fetchGifs(query);
+            console.log(response.data);
             data = response.data.map((item) => ({
               id: item.id,
               type: "gifs",
               title: item.title,
               thumbnail: item.images.original.url,
               src: item.images.downsized.url,
+              url: item.url,
             }));
           }
           dispatch(setResults(data));
         } catch (err) {
-          dispatch(setErrror(err.messege));
+          dispatch(setError(err.messege));
         }
 
         // console.log(data);
@@ -71,7 +77,11 @@ const ResultGrid = () => {
     <div className="flex justify-center w-full flex-wrap gap-6 overflow-auto px-8">
       {" "}
       {results.map((item, idx) => {
-        return <ResultCard key={item.id} item={item} />;
+        return (
+          <a target="_blank" href={item.url}>
+            <ResultCard key={item.id} item={item} />
+          </a>
+        );
       })}
     </div>
   );

@@ -14,7 +14,7 @@ export const ResultCard = ({ item }) => {
           ""
         )}
 
-        {/* {item.type == "video" ? (
+        {item.type == "video" ? (
           <video
             className="h-full w-full object-fit object-cover"
             autoPlay
@@ -24,7 +24,7 @@ export const ResultCard = ({ item }) => {
           ></video>
         ) : (
           ""
-        )} */}
+        )}
         {item.type == "gifs" ? (
           <img
             className="h-full w-full object-fit object-cover"
@@ -39,7 +39,7 @@ export const ResultCard = ({ item }) => {
         id="bottom"
         className=" w-full px-6 py-5 absolute bottom-0 text-white"
       >
-        <h2 className="text-sm font-semibold overflow-hidden">{item.title}</h2>
+        <h2 className="text-sm font-semibold ">{item.title}</h2>
       </div>
     </div>
   );
