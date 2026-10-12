@@ -24,7 +24,6 @@ const ResultGrid = () => {
           let data = {};
           if (activeTab == "images") {
             let response = await fetchPhotos(query);
-            console.log(response.results);
             data = response.results.map((item) => ({
               id: item.id,
               type: "image",
@@ -77,11 +76,7 @@ const ResultGrid = () => {
     <div className="flex justify-center w-full flex-wrap gap-6 overflow-auto px-8">
       {" "}
       {results.map((item, idx) => {
-        return (
-         
-            <ResultCard key={item.id} item={item} />
-    
-        );
+        return <ResultCard key={item.id} item={item} />;
       })}
     </div>
   );

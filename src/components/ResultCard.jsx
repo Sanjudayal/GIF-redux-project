@@ -1,6 +1,14 @@
 import React from "react";
 
 export const ResultCard = ({ item }) => {
+  console.log(item);
+  const addToColletion = (item) => {
+    console.log(item);
+    const oldData = JSON.parse(localStorage.getItem("collection")) || [];
+    const newData = [...oldData, item];
+    localStorage.setItem("collection", JSON.stringify(newData));
+    console.log(newData);
+  };
   return (
     <div className="relative w-[17vw] h-40 bg-white">
       <a target="_blank" href={item.url}>
@@ -50,7 +58,7 @@ export const ResultCard = ({ item }) => {
 
         {/* Save Button */}
         <button
-        
+          onClick={() => addToColletion(item)}
           className="bg-blue-600 hover:bg-blue-700 text-white p-1.5 rounded transition-colors duration-200 cursor-pointer flex items-center justify-center shrink-0"
           title="Save Item"
         >
