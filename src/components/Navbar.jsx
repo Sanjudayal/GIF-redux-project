@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -10,15 +11,30 @@ const Navbar = () => {
 
       {/* Right side: Navigation Links/Buttons */}
       <div className="flex gap-3">
-        {/* Active Button */}
-        {/* <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              isActive
+                ? "text-white bg-blue-600 hover:bg-blue-700"
+                : "text-slate-400 bg-transparent hover:text-white hover:bg-[#1e2530]"
+            }`
+          }
+        >
           Search
-        </button> */}
-
-        {/* Inactive Button */}
-        <button className="px-4 py-2 text-sm font-medium text-slate-400 bg-transparent rounded-lg hover:text-white hover:bg-[#1e2530] transition-all duration-200">
+        </NavLink>
+       <NavLink
+          to="/collection"
+          className={({ isActive }) =>
+            `px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              isActive
+                ? "text-white bg-blue-600 hover:bg-blue-700"
+                : "text-slate-400 bg-transparent hover:text-white hover:bg-[#1e2530]"
+            }`
+          }
+        >
           Collection
-        </button>
+        </NavLink>
       </div>
     </nav>
   );
