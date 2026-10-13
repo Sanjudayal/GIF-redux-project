@@ -9,7 +9,7 @@ export const ResultCard = ({ item }) => {
     dispatch(addedToast());
   };
   return (
-    <div className="relative w-[17vw] h-40 bg-white rounded overflow-hidden">
+    <div className="relative w-50 md:w-[17vw] h-60 md:h-40 bg-white rounded overflow-hidden">
       <a target="_blank" href={item.url}>
         <div className="h-full">
           {item.type == "image" ? (

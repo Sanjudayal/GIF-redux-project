@@ -73,7 +73,7 @@ const ResultGrid = () => {
   if (loading) return <h1 className="flex justify-center"> Loading...</h1>;
 
   return (
-    <div className="flex justify-center w-full flex-wrap gap-6 overflow-auto px-8">
+    <div className="flex flex-col md:flex-row justify-center items-center w-full flex-wrap gap-6 overflow-auto px-8">
       {" "}
       {results.map((item, idx) => {
         return <ResultCard key={item.id} item={item} />;

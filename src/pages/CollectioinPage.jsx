@@ -34,7 +34,7 @@ export const CollectioinPage = () => {
       </div>
 
       {collection.length > 0 ? (
-        <div className="flex justify-start w-full flex-wrap gap-6 overflow-auto">
+        <div className="flex flex-col md:flex-row justify-start items-center w-full flex-wrap gap-6 overflow-auto">
           {collection.map((item) => (
             <CollectionCard item={item} key={item.id} />
           ))}
