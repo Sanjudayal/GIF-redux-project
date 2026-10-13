@@ -1,14 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addCollection } from "../redux/features/collectionSlice";
+import { addCollection, addedToast } from "../redux/features/collectionSlice";
 
 export const ResultCard = ({ item }) => {
   const dispatch = useDispatch();
   const addToColletion = (item) => {
     dispatch(addCollection(item));
+    dispatch(addedToast());
   };
   return (
-    <div className="relative w-[17vw] h-40 bg-white">
+    <div className="relative w-[17vw] h-40 bg-white rounded overflow-hidden">
       <a target="_blank" href={item.url}>
         <div className="h-full">
           {item.type == "image" ? (
