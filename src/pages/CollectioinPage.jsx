@@ -1,7 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CollectionCard from "../components/CollectionCard";
-import { clearCollection } from "../redux/features/collectionSlice";
+import {
+  clearCollection,
+  clearCollectionToast,
+} from "../redux/features/collectionSlice";
 
 export const CollectioinPage = () => {
   const dispatch = useDispatch();
@@ -9,6 +12,7 @@ export const CollectioinPage = () => {
 
   const handleClearCollection = () => {
     dispatch(clearCollection());
+    dispatch(clearCollectionToast());
   };
 
   return (
@@ -21,7 +25,7 @@ export const CollectioinPage = () => {
         {/* Only show the clear button if there are items in the collection */}
         {collection.length > 0 && (
           <button
-            onClick={handleClearCollection}
+            onClick={() => handleClearCollection()}
             className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold text-base rounded-lg shadow-md transition-colors duration-200 cursor-pointer"
           >
             Clear Collection

@@ -52,6 +52,19 @@ const collectionSlice = createSlice({
         transition: Bounce,
       });
     },
+    clearCollectionToast: () => {
+      toast.error("collections is Empty!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    },
   },
 });
 
@@ -61,6 +74,7 @@ export const {
   clearCollection,
   addedToast,
   removedToast,
+  clearCollectionToast,
 } = collectionSlice.actions;
 
 export default collectionSlice.reducer;
